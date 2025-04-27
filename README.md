@@ -22,7 +22,8 @@ Track your learning progress, manage courses, and visualize achievements — bui
 
 | Login Page | Dashboard | Course Progress |
 |:---|:---|:---|
-| ![Login](screenshots/login.png) | ![Dashboard](screenshots/dashboard.png) | ![Progress](screenshots/progress.png) |
+| ![Login](https://github.com/user-attachments/assets/f2e49f5e-2c22-4580-a5ae-232336c96d7c) | ![Dashboard](screenshots/dashboard.png) | ![Progress](screenshots/progress.png) |
+
 
 > (You can upload some screenshots inside `/public/screenshots/`)
 
