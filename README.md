@@ -11,23 +11,23 @@ Users can **sign up**, **log in**, **create courses**, **add lessons**, and **tr
 
 ## 🚀 Features
 
-- User Authentication (Login, Signup, Logout) using Firebase Auth
-- CRUD Operations with Firebase Firestore
-- Add Courses and Lessons dynamically
-- Track lesson completion status ✅
-- Responsive Dashboard with interactive UI
-- Real-time Progress Visualization using Chart.js (Doughnut Chart)
-- Protected routes for authenticated users only
-- Styled with TailwindCSS for modern, mobile-friendly design
+- 🔐 **Authentication** (Login / Signup) with Firebase
+- 📖 **Add, complete, delete lessons** inside courses
+- 🏆 **Unlock badges** and **level up** based on progress
+- 📈 **Real-time progress charts** (Doughnut and Progress bars)
+- 🗑️ **Confirmation popups** before deleting lessons
+- 🎖️ **Badge Gallery** and **Level Display**
+- 🎨 **Responsive UI** with clean TailwindCSS styling
+- 🌐 **Protected Routes** (only logged-in users can access Dashboard)
 
 ---
 
 ## 🛠️ Tech Stack
 
-- **Frontend:** Next.js, React, TailwindCSS
-- **Backend:** Firebase (Authentication + Firestore)
-- **Charts:** Chart.js
-- **Version Control:** Git & GitHub
+| Frontend | Backend | Database | Other |
+|:---|:---|:---|:---|
+| React.js | Next.js | Firebase Firestore | TailwindCSS |
+| NextAuth | Node.js (built-in) | Firebase Authentication | Chart.js |
 
 ---
 
@@ -35,9 +35,7 @@ Users can **sign up**, **log in**, **create courses**, **add lessons**, and **tr
 
 | Login Page | Sign Up Page | Dashboard | Course Progress |
 ![Login](https://github.com/user-attachments/assets/f2e49f5e-2c22-4580-a5ae-232336c96d7c) ![Sign Up Page](https://github.com/user-attachments/assets/5db7e7b6-40fb-433d-a502-aa42f12c776a)
-![Dashboard](https://github.com/user-attachments/assets/69166616-8216-411a-a976-fb10321343df)![Progress](https://github.com/user-attachments/assets/b592076b-9cb0-4286-a78b-0b4cfdaa9b18) 
-
----
+![Dashboard](https://github.com/user-attachments/assets/d33808b1-54d7-4811-ba71-a0e526df668e)![Progress](https://github.com/user-attachments/assets/81d49a6a-aff9-4f92-bdb2-e8078534a2f5) 
 
 ## 🔥 Getting Started
 
