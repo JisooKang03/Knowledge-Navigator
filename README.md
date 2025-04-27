@@ -134,13 +134,7 @@ src/
 ---
 
 ## ✨ Future Improvements
-
-- Add "Edit Course" and "Delete Course" functionality
-- Allow reordering lessons
-- Add user profile pages
 - Dark mode support 🌑
-- Notifications and Toast messages
-
 ---
 
 ## 🙌 Credits
