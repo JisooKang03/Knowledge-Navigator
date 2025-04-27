@@ -24,23 +24,33 @@ export default function SignupPage() {
       router.push("/dashboard");
     } catch (err) {
       console.error(err);
-      setError(err.message);
+      setError("Sign up failed. Please try again.");
     }
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gradient-to-r from-blue-500 to-purple-600">
-      <form onSubmit={handleSignup} className="bg-white p-8 rounded-lg shadow-lg w-96">
-        <h1 className="text-3xl font-bold mb-6 text-center text-gray-800">Sign Up</h1>
+    <div className="flex items-center justify-center min-h-screen bg-gradient-to-r from-green-400 to-blue-500 p-6">
+      <form
+        onSubmit={handleSignup}
+        className="bg-white p-8 rounded-xl shadow-2xl w-full max-w-md flex flex-col gap-4"
+      >
+        <h1 className="text-3xl font-extrabold text-center text-gray-800 mb-2">
+          Create Your Account
+        </h1>
+        <p className="text-center text-gray-500 text-sm mb-6">
+          Join and start tracking your learning journey 🚀
+        </p>
 
-        {error && <p className="text-red-500 mb-4 text-center">{error}</p>}
+        {error && (
+          <p className="text-red-500 text-center font-medium">{error}</p>
+        )}
 
         <input
           type="email"
-          placeholder="Email"
+          placeholder="Email address"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          className="w-full px-4 py-2 mb-4 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400 text-black"
+          className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-400 text-black"
           required
         />
 
@@ -49,20 +59,23 @@ export default function SignupPage() {
           placeholder="Password (6+ characters)"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          className="w-full px-4 py-2 mb-6 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400 text-black"
+          className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-400 text-black"
           required
         />
 
         <button
           type="submit"
-          className="w-full bg-green-600 text-white py-2 rounded-md hover:bg-green-700 transition"
+          className="w-full bg-green-600 hover:bg-green-700 text-white py-3 rounded-md font-semibold transition"
         >
-          Create Account
+          Sign Up
         </button>
 
-        <p className="text-center mt-4 text-gray-700">
+        <p className="text-center text-sm text-gray-600 mt-4">
           Already have an account?{" "}
-          <a href="/login" className="text-blue-200 font-bold hover:underline">
+          <a
+            href="/login"
+            className="text-green-600 hover:underline font-semibold transition"
+          >
             Login
           </a>
         </p>

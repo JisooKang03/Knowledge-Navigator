@@ -16,23 +16,33 @@ export default function LoginPage() {
       router.push("/dashboard");
     } catch (err) {
       console.error(err);
-      setError(err.message);
+      setError("Invalid email or password. Please try again.");
     }
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gradient-to-r from-blue-500 to-purple-600">
-      <form onSubmit={handleLogin} className="bg-white p-8 rounded-lg shadow-lg w-96">
-        <h1 className="text-3xl font-bold mb-6 text-center text-gray-800">Login</h1>
+    <div className="flex items-center justify-center min-h-screen bg-gradient-to-r from-blue-500 to-purple-600 p-6">
+      <form
+        onSubmit={handleLogin}
+        className="bg-white p-8 rounded-xl shadow-2xl w-full max-w-md flex flex-col gap-4"
+      >
+        <h1 className="text-3xl font-extrabold text-center text-gray-800 mb-2">
+          Welcome Back
+        </h1>
+        <p className="text-center text-gray-500 text-sm mb-6">
+          Please login to continue
+        </p>
 
-        {error && <p className="text-red-500 mb-4 text-center">{error}</p>}
+        {error && (
+          <p className="text-red-500 text-center font-medium">{error}</p>
+        )}
 
         <input
           type="email"
-          placeholder="Email"
+          placeholder="Email address"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          className="w-full px-4 py-2 mb-4 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400 text-black"
+          className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400 text-black"
           required
         />
 
@@ -41,20 +51,23 @@ export default function LoginPage() {
           placeholder="Password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          className="w-full px-4 py-2 mb-6 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400 text-black"
+          className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400 text-black"
           required
         />
 
         <button
           type="submit"
-          className="w-full bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700 transition"
+          className="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-md font-semibold transition"
         >
           Login
         </button>
 
-        <p className="text-center mt-4 text-gray-700">
+        <p className="text-center text-sm text-gray-600 mt-4">
           Don’t have an account?{" "}
-          <a href="/signup" className="text-blue-200 font-bold hover:underline">
+          <a
+            href="/signup"
+            className="text-blue-600 hover:underline font-semibold transition"
+          >
             Sign Up
           </a>
         </p>

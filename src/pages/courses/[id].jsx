@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
-import { db } from "../../lib/firebase"; // ✅ correct relative import
+import { db, auth } from "../../lib/firebase";
 import { doc, getDoc, collection, addDoc, updateDoc, getDocs } from "firebase/firestore";
-import { auth } from "../../lib/firebase"; // ✅ correct relative import
 import Navbar from "../../components/Navbar";
 import ProgressChart from "../../components/ProgressChart";
 import ProtectedRoute from "../../utils/protectedRoute";
@@ -13,6 +12,7 @@ function CoursePage() {
   const [course, setCourse] = useState(null);
   const [lessons, setLessons] = useState([]);
   const [lessonTitle, setLessonTitle] = useState("");
+  const [error, setError] = useState("");
 
   useEffect(() => {
     if (id) {
@@ -53,14 +53,18 @@ function CoursePage() {
     const user = auth.currentUser;
     if (!user || !lessonTitle.trim()) return;
 
-    await addDoc(collection(db, "users", user.uid, "courses", id, "lessons"), {
-      title: lessonTitle.trim(),
-      completed: false,
-      createdAt: new Date(),
-    });
-
-    setLessonTitle("");
-    fetchLessons();
+    try {
+      await addDoc(collection(db, "users", user.uid, "courses", id, "lessons"), {
+        title: lessonTitle.trim(),
+        completed: false,
+        createdAt: new Date(),
+      });
+      setLessonTitle("");
+      fetchLessons();
+    } catch (err) {
+      console.error(err);
+      setError("Failed to add lesson. Please try again.");
+    }
   };
 
   const toggleLessonCompletion = async (lessonId, currentStatus) => {
@@ -78,46 +82,63 @@ function CoursePage() {
   const completedCount = lessons.filter((lesson) => lesson.completed).length;
 
   return (
-    <div className="min-h-screen bg-blue-100">
+    <div className="min-h-screen bg-gray-50">
       <Navbar />
 
       <main className="max-w-4xl mx-auto p-6">
-        <h1 className="text-3xl font-bold mb-6 text-gray-800">{course?.title || "Loading..."}</h1>
+        <div className="bg-white p-6 rounded-lg shadow-md">
+          <h1 className="text-3xl font-bold mb-4 text-gray-800">{course?.title || "Loading..."}</h1>
+          {course?.description && (
+            <p className="text-gray-600 mb-6">{course.description}</p>
+          )}
 
-        <ProgressChart completed={completedCount} total={lessons.length} />
+          <ProgressChart completed={completedCount} total={lessons.length} />
 
-        <form onSubmit={handleAddLesson} className="flex gap-4 mt-6">
-          <input
-            type="text"
-            placeholder="New Lesson Title"
-            value={lessonTitle}
-            onChange={(e) => setLessonTitle(e.target.value)}
-            className="flex-1 px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400 text-black bg-white"
-            required
-          />
-          <button
-            type="submit"
-            className="px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700"
-          >
-            Add Lesson
-          </button>
-        </form>
-
-        <div className="mt-8 space-y-4">
-          {lessons.map((lesson) => (
-            <div
-              key={lesson.id}
-              className="flex items-center justify-between p-4 bg-white rounded-lg shadow"
+          <form onSubmit={handleAddLesson} className="flex flex-col sm:flex-row gap-4 mt-8">
+            <input
+              type="text"
+              placeholder="New Lesson Title"
+              value={lessonTitle}
+              onChange={(e) => setLessonTitle(e.target.value)}
+              className="flex-1 px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400 bg-white text-black"
+              required
+            />
+            <button
+              type="submit"
+              className="px-6 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 transition"
             >
-              <span className="text-gray-800 font-medium">{lesson.title}</span>
-              <button
-                onClick={() => toggleLessonCompletion(lesson.id, lesson.completed)}
-                className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700"
+              Add Lesson
+            </button>
+          </form>
+
+          {error && <p className="text-red-500 text-center mt-4">{error}</p>}
+
+          <div className="mt-8 space-y-4">
+            {lessons.map((lesson) => (
+              <div
+                key={lesson.id}
+                className="flex items-center justify-between p-4 bg-gray-100 rounded-lg shadow hover:shadow-md transition"
               >
-                {lesson.completed ? "Undo" : "Complete"}
-              </button>
-            </div>
-          ))}
+                <span
+                  className={`text-lg font-medium ${
+                    lesson.completed ? "line-through text-green-600" : "text-gray-800"
+                  }`}
+                >
+                  {lesson.title}
+                </span>
+                <button
+                  onClick={() => toggleLessonCompletion(lesson.id, lesson.completed)}
+                  className={`px-4 py-2 rounded-md transition ${
+                    lesson.completed
+                      ? "bg-yellow-500 hover:bg-yellow-600 text-white"
+                      : "bg-blue-600 hover:bg-blue-700 text-white"
+                  }`}
+                >
+                  {lesson.completed ? "Undo" : "Complete"}
+                </button>
+              </div>
+            ))}
+          </div>
         </div>
       </main>
     </div>
