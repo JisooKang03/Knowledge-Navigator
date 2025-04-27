@@ -33,11 +33,9 @@ Users can **sign up**, **log in**, **create courses**, **add lessons**, and **tr
 
 ## 📸 Screenshots
 
-| Login Page | Dashboard | Course Progress |
-
-|:---|:---|:---|
-
-| ![Login](https://github.com/user-attachments/assets/f2e49f5e-2c22-4580-a5ae-232336c96d7c) | ![Dashboard](https://github.com/user-attachments/assets/69166616-8216-411a-a976-fb10321343df) | ![Progress](https://github.com/user-attachments/assets/b592076b-9cb0-4286-a78b-0b4cfdaa9b18)
+| Login Page | Sign Up Page | Dashboard | Course Progress |
+![Login](https://github.com/user-attachments/assets/f2e49f5e-2c22-4580-a5ae-232336c96d7c) ![Sign Up Page](https://github.com/user-attachments/assets/5db7e7b6-40fb-433d-a502-aa42f12c776a)
+![Dashboard](https://github.com/user-attachments/assets/69166616-8216-411a-a976-fb10321343df)![Progress](https://github.com/user-attachments/assets/b592076b-9cb0-4286-a78b-0b4cfdaa9b18) 
 
 ---
 
