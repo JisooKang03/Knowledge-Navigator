@@ -22,8 +22,9 @@ Track your learning progress, manage courses, and visualize achievements — bui
 
 | Login Page | Dashboard | Course Progress |
 |:---|:---|:---|
-| ![Login](https://github.com/user-attachments/assets/f2e49f5e-2c22-4580-a5ae-232336c96d7c) | ![Dashboard](<img width="1512" alt="Screenshot 2025-04-26 at 8 48 20 PM" src="https://github.com/user-attachments/assets/12766398-dc49-4b6c-9fff-292a15c0f048" />) | ![Progress](<img width="1512" alt="Screenshot 2025-04-26 at 8 49 14 PM" src="https://github.com/user-attachments/assets/b592076b-9cb0-4286-a78b-0b4cfdaa9b18" />
+| ![Login](https://github.com/user-attachments/assets/f2e49f5e-2c22-4580-a5ae-232336c96d7c) | ![Dashboard](<img width="1512" alt="Screenshot 2025-04-26 at 8 50 47 PM" src="https://github.com/user-attachments/assets/69166616-8216-411a-a976-fb10321343df" />) | ![Progress](<img width="1512" alt="Screenshot 2025-04-26 at 8 49 14 PM" src="https://github.com/user-attachments/assets/b592076b-9cb0-4286-a78b-0b4cfdaa9b18" />
 ) |
+
 
 
 > (You can upload some screenshots inside `/public/screenshots/`)
